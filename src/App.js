@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Input from './Components/Input/Input';
+import SomeList from './SomeList';
 
 
 function App() {
@@ -16,9 +17,7 @@ function App() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    
     console.log({login, password});
-    
   }
 
   const onChangeInput = (e, name, pattern) => {
@@ -51,12 +50,16 @@ function App() {
   
   return (
     <div className="App">
-      <form onSubmit={onSubmit}>
-        <Input name='login' title='Логин' onChange={(e)=>onChangeInput(e, "login", /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/)} placeholder="Please fill your login" isCorrect={isLoginCorrect}  />      
-        <Input name='password' title='Пароль' onChange={(e)=>onChangeInput(e, "password",/(?=.*\d).{6}/)} placeholder="Please fill your password" isCorrect={isPasswordCorrect}  />      
-        
-        <button type='submit' disabled = {isButtonDisabled}>Submit form</button>
+      <div>
+        <form onSubmit={onSubmit}>
+          <Input name='login' title='Логин' onChange={(e)=>onChangeInput(e, "login", /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/)} placeholder="Please fill your login" isCorrect={isLoginCorrect}  />      
+          <Input name='password' title='Пароль' onChange={(e)=>onChangeInput(e, "password",/(?=.*\d).{6}/)} placeholder="Please fill your password" isCorrect={isPasswordCorrect}  />      
+          <button type='submit' disabled = {isButtonDisabled}>Submit form</button>
       </form>
+      <div>
+        </div>
+          <SomeList/>
+      </div>
     </div>
   );
 }
